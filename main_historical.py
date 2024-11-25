@@ -220,7 +220,7 @@ def save_historical_image(
     # Activate historical imagery using Command+H shortcut
     actions = ActionChains(driver)
     actions.key_down(Keys.COMMAND).send_keys('h').key_up(Keys.COMMAND).perform()
-    wait_URL_stablize(driver)
+    # wait_URL_stablize(driver)
 
     remove_float_window(driver, temp_screenshot_path)
 
@@ -244,7 +244,7 @@ def save_historical_image(
     # Note: This is because the default url does not contain date, by going backward and then going frontword,
     #       the url will be changed to contains the exact date of the image
     press_at(driver, raw_image.size, matching_locations["<"])
-    wait_URL_stablize(driver)
+    # wait_URL_stablize(driver)
     press_at(driver, raw_image.size, matching_locations[">"])
     wait_URL_stablize(driver)
 
@@ -261,7 +261,7 @@ def save_historical_image(
 
         # press next year
         press_at(driver, raw_image.size, matching_locations["<"])
-        wait_URL_stablize(driver)
+        wait_URL_stablize(driver, interval = 0.1)
         prev_date = date
         date = extract_date_from_url(driver)
 
